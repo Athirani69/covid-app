@@ -1,0 +1,15 @@
+const express=require("express")
+const router=express.Router()
+const patModel=require("../models/patientModel")
+
+
+router.post("/patiententry",async(req,res)=>{
+   let data=req.body
+   let patobj=new patModel(data)
+   let result=await patobj.save()
+   res.json({
+    status:"success"
+   })
+})
+
+module.exports=router;
